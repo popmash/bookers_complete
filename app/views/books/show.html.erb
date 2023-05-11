@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-3 pb-5">
     <div class="col-md-3">
-      <%= render 'info' %>
+      <%= render 'info',current_user: @book.user %>
       <%= render 'form', book_new: @book_new %> 
     </div>
     <div class="col-md-8 off-set-1 ml-auto">
