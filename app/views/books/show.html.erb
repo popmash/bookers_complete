@@ -1,2 +1,25 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container">
+  <div class="row pt-3 pb-5">
+    <div class="col-md-3">
+      <%= render 'info' %>
+      <%= render 'form', book_new: @book_new %> 
+    </div>
+    <div class="col-md-8 off-set-1 ml-auto">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag @book.user.get_profile_image,size: '100x100' %><br>
+              <%=link_to @book.user.name, @book.user  %>
+            </td>
+            <td><%= link_to @book.title, @book %></td>
+            <td><%= @book.body %></td>
+            <td><%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-success btn-sm' %></td>
+            <td><%= link_to 'Destroy', book_path,method: :delete, class: 'btn btn-danger btn-sm' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
