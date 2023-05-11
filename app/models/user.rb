@@ -12,5 +12,6 @@ class User < ApplicationRecord
     (profile_image.attahched?) ? profile_image : 'no_image.jpg'
   end
   
-  
+  validates :name, uniqueness: true, length: { in: 2..20}
+  validates :introduction, length: { maximum: 50 }
 end
