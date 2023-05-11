@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   def get_profile_image
-    (profile_image.attahched?) ? profile_image : 'no_image.jpg'
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
   
   validates :name, uniqueness: true, length: { in: 2..20}
