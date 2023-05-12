@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-3 pb-5">
     <div class="col-md-3">
-      <%= render 'info',current_user: @book.user %>
+      <%= render 'info',user: @book.user %>
       <%= render 'form', book_new: @book_new %> 
     </div>
     <div class="col-md-8 offset-md-1 ml-auto">
@@ -15,6 +15,8 @@
             </td>
             <td><%= link_to @book.title, @book %></td>
             <td><%= @book.body %></td>
+                <%= render 'favorites/favorite', book: @book %>
+            <td><%= render 'book_comments/count', book: @book %></td>
             <% if @book.user == current_user %>
               <td><%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-success btn-sm' %></td>
               <td><%= link_to 'Destroy', book_path,method: :delete, class: 'btn btn-danger btn-sm' %></td>
@@ -22,10 +24,7 @@
           </tr>
         </tbody>
       </table>
-      
       <%= render 'book_comments/form', book: @book, book_comments: @book_comments,book_comment_new: @book_comment_new %>
-      
-      
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <%= render 'layouts/error', book_new: @book_new %>
   <div class="row pt-3 pb-5">
     <div class="col-md-3">
-      <%= render 'info' %>
+      <%= render 'info',user: current_user %>
       <%= render 'form', book_new: @book_new %>
     </div>
     <div class="col-md-8 offset-md-1 ml-auto">
@@ -26,20 +26,8 @@
            </td>
          <td><%= link_to book.title, book_path(book) %></td>
          <td><%= book.body %></td>
-         <% if book.favorited_by?(current_user) %>
-          <td>
-           <%= link_to book_favorites_path(book),class: 'text-danger', method: :delete do %>
-           <i class="fas fa-heart"></i><%= book.favorites.count %>
-           <% end %>
-          </td>
-          <% else %>
-          <td>
-            <%= link_to book_favorites_path(book),method: :post do %>
-            <i class="far fa-heart"></i><%= book.favorites.count %>
-            <% end %>
-          </td>
-          <% end %>
-         <td>コメント数: <%= book.book_comments.count %></td>
+             <%= render 'favorites/favorite', book: book %>
+         <td><%= render 'book_comments/count', book: book %></td>
         </tr>
         <% end %>
       </tbody>
