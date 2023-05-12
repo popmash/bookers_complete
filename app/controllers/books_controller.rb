@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def index
     @book_new = Book.new
     @books = Book.all
+    
   end
 
   def create
@@ -31,7 +32,7 @@ class BooksController < ApplicationController
       redirect_to books_path
     end
   end
-  
+
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
