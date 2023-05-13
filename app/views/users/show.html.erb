@@ -7,6 +7,7 @@
     <div class="col-md-8 offset-md-1 ml-auto">
      <%= render 'mylist', books: @books %>
      <%= render 'comparison', today_book: @today_book,yesterday_book: @yesterday_book, this_week_book: @this_week_book, last_week_book: @last_week_book %>
+     <%= render 'graph', this_week_book_counts: @this_week_book_counts %>
     </div>
   </div>
 </div>
