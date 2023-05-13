@@ -15,16 +15,22 @@
             </td>
             <td><%= link_to @book.title, @book %></td>
             <td><%= @book.body %></td>
-                <%= render 'favorites/favorite', book: @book %>
-            <td><%= render 'book_comments/count', book: @book %></td>
+            <td id="favorite_button<%= @book.id %>">
+              <%= render 'favorites/favorite', book: @book %>
+            </td>
+            <td id="comments-counter"><%= render 'book_comments/counter', book: @book %></td>
             <% if @book.user == current_user %>
               <td><%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-success btn-sm' %></td>
               <td><%= link_to 'Destroy', book_path,method: :delete, class: 'btn btn-danger btn-sm' %></td>
             <% end %>
+             <td>閲覧数: <%= @book.view_counts.count %></td>
           </tr>
         </tbody>
       </table>
-      <%= render 'book_comments/form', book: @book, book_comments: @book_comments,book_comment_new: @book_comment_new %>
+      <div id="comments-index">
+       <%= render 'book_comments/index', book: @book %>
+      </div>
+      <%= render 'book_comments/form', book: @book, book_comment_new: @book_comment_new %>
     </div>
   </div>
 </div>

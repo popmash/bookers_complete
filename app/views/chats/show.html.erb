@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row bg-info">
+    <div class="col-md-10 mx-auto">
+      
+        <div class="message"> 
+         <%= render 'chats/message', room: @room, chats: @chats %>
+        </div>
+        <div class="errors">
+            <%= render "layouts/errors", obj: @chat %>
+        </div>
+         <div class="text-center pb-3">
+           <%= form_with model: @chat, data: {remote: true} do |f| %>
+            <%= f.text_field :message, placeholder: 'メッセージを入力する' %>
+            <%= f.hidden_field :room_id %>
+            <%= f.submit "送信" %>
+           <% end %>
+         </div>
+     </div>
+  </div>
+</div>

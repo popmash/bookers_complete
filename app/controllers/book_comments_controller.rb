@@ -2,17 +2,17 @@ class BookCommentsController < ApplicationController
   
   def create
   @book = Book.find(params[:book_id])
-  @comments = BookComment.new(book_comments_params)
-  @comments.user_id = current_user.id
-  @comments.book_id = @book.id
-  @comments.save
-  redirect_to request.referer
+  @comment = BookComment.new(book_comments_params)
+  @comment.user_id = current_user.id
+  @comment.book_id = @book.id
+  @comment.save
+  
   end
   
   def destroy
-    @book_comment = BookComment.find(params[:book_id])
-    @book_comment.destroy
-    redirect_to request.referer
+    @comment = BookComment.find(params[:book_id])
+    @comment.destroy
+    
   end
   private 
   
