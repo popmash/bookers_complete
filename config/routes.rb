@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get "join" => "groups#join"
   end
   get "search" => "searches#search"
+  get 'tagsearches/search', to: 'tagsearches#search'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
